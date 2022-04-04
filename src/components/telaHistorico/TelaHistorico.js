@@ -1,5 +1,11 @@
-export default function TelaHistorico() {
+import Header from "../header/Header";
+
+export default function TelaHistorico({token, imagem}) {
     return (
-        <h1>Tela Historico</h1>
+        <>
+            <Header imagem={imagem}/>
+            <h1>Tela Historico</h1>
+        </>
+        
     );
 }

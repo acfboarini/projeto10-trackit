@@ -1,5 +1,10 @@
-export default function TelaHoje() {
+import Header from "../header/Header";
+
+export default function TelaHoje({token, imagem}) {
     return (
-        <h1>Tela Hoje</h1>
+        <>
+            <Header imagem={imagem}/>
+            <h1>Tela Hoje</h1>
+        </>
     );
 }

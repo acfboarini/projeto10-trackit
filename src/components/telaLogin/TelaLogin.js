@@ -1,24 +1,52 @@
-import { useState, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
+
+import Logo from "./../logo/Logo";
 
 import "./login.css";
 
-export default function TelaLogin() {
+export default function TelaLogin({salvarToken}) {
 
     const [email, setEmail] = useState("");
     const[senha, setSenha] = useState("");
 
+    const navigate = useNavigate();
+
+    function login() {
+        const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
+
+        const promise = axios.post(URL, {
+            email: email,
+            password: senha
+        });
+        promise.then(response => {
+            const {data} = response;
+            console.log(data);
+            salvarToken(data.token);
+            navigate("/habitos");
+        });
+        promise.catch(err => {
+            console.log(err);
+            console.log("usuario não existe");
+        });
+    }
+
     return (
         <main>
-            <section>
-                <img src="" alt=""/>
-                <h2>TrackIt</h2>
-            </section>
-            <section className="section-login">
-                <input placeholder="email"></input>
-                <input placeholder="senha"></input>
-                <button>Entrar</button>
+            <Logo/>
+            <section className="registros">
+                <input type="text" placeholder="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                />
+                <input type="password" placeholder="senha"
+                    value={senha}
+                    onChange={e => setSenha(e.target.value)}
+                />
+                <button onClick={login}>
+                    <span>Entrar</span>
+                </button>
                 <Link to="/cadastro" style={{textDecoration: 'none'}}>
                     <p>Não tem uma conta? Cadastre-se!</p>
                 </Link>

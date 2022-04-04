@@ -1,0 +1,30 @@
+.habitos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin: 20px 0px;
+    margin-top: 80px;
+}
+
+.habitos > h3 {
+    font-size: 23px;
+    color: #126BA5;
+}
+
+.habitos > button {
+    width: 40px;
+    height: 35px;
+    background: #52B6FF;
+    border-radius: 5px;
+    border: none;
+}
+
+.habitos > button > span {
+    color: #ffffff;
+    font-size: 27px;
+}
+
+li button ion-icon {
+    font-size: 15px;
+}

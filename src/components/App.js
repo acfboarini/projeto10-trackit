@@ -1,5 +1,5 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+import { useState } from "react";
 
 /* Imports Telas */
 import Header from "./header/Header";
@@ -14,15 +14,42 @@ import "./../styles/reset.css";
 import "./../styles/style.css";
 
 export default function App() {
+
+    const [token, setToken] = useState(null);
+    const [imagem, setImagem] = useState(null);
+
+    function salvarImagem(imagem) {
+        setImagem(imagem)
+    }
+
+    function salvarToken(token) {
+        setToken(token);
+    }
+
     return (
         <BrowserRouter>
-            <Header/>
             <Routes>
-                <Route path="/" element={<TelaLogin/>}></Route>
-                <Route path="/cadastro" element={<TelaCadastro/>}></Route>
-                <Route path="/habitos" element={<TelaHabitos/>}></Route>
-                <Route path="/hoje" element={<TelaHoje/>}></Route>
-                <Route path="/historico" element={<TelaHistorico/>}></Route>
+                <Route path="/" 
+                    element={
+                        <TelaLogin salvarToken={token => salvarToken(token)}/>
+                    }
+                ></Route>
+
+                <Route path="/cadastro" 
+                    element={<TelaCadastro salvarImagem={salvarImagem}/>}
+                ></Route>
+
+                <Route path="/habitos" 
+                    element={<TelaHabitos token={token} imagem={imagem}/>}
+                ></Route>
+
+                <Route path="/hoje" 
+                    element={<TelaHoje token={token} imagem={imagem}/>}
+                ></Route>
+
+                <Route path="/historico" 
+                    element={<TelaHistorico token={token} imagem={imagem}/>}
+                ></Route>
             </Routes>
         </BrowserRouter>
     )

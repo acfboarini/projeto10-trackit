@@ -1,10 +1,10 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
-import Logo from "./logo/Logo";
+import Logo from "./../logo/Logo";
 import axios from "axios";
 
-export default function TelaCadastro() {
+export default function TelaCadastro({salvarImagem}) {
 
     const [email, setEmail] = useState("");
     const [senha, setSenha] = useState("");
@@ -26,6 +26,7 @@ export default function TelaCadastro() {
             const {data} = response;
             console.log("cadastrado com sucesso", data);
             alert("cadastrado com sucesso");
+            salvarImagem(data.image);
             navigate("/");
         });
 
@@ -37,7 +38,7 @@ export default function TelaCadastro() {
     return (
         <main>
             <Logo/>
-            <section className="section-login">
+            <section className="registros">
                 <input type="text" placeholder="email"
                     onChange={e => setEmail(e.target.value)}
                     value={email}
@@ -54,7 +55,9 @@ export default function TelaCadastro() {
                     onChange={e => setFoto(e.target.value)}
                     value={foto}
                 />
-                <button onClick={cadastrar}>Cadastrar</button>
+                <button onClick={cadastrar}>
+                    <span>Cadastrar</span>
+                </button>
                 <Link to="/" style={{textDecoration: 'none'}}>
                     <p>Jé tem uma conta? Faça login</p>
                 </Link>
