@@ -2,7 +2,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState } from "react";
 
 /* Imports Telas */
-import Header from "./header/Header";
 import TelaLogin from "./telaLogin/TelaLogin";
 import TelaCadastro from "./telaCadastro/TelaCadastro";
 import TelaHabitos from "./telaHabitos/TelaHabitos";

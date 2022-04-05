@@ -3,6 +3,8 @@ import axios from "axios";
 
 import Button from "./Button";
 
+import "./criacaoHabito.css";
+
 export default function CriacaoHabito({callback, setReload, token}) {
 
     const [nome, setNome] = useState("");
@@ -59,7 +61,7 @@ export default function CriacaoHabito({callback, setReload, token}) {
     }
 
     return (
-        <li>
+        <li className="add-habito">
             <input 
                 type="text" 
                 value={nome} 
@@ -74,10 +76,12 @@ export default function CriacaoHabito({callback, setReload, token}) {
                     )
                 })}
             </div>
-            <button onClick={() => callback(false)}>Cancelar</button>
-            <button onClick={() => {
-                validarDados(listaDias, nome);
-            }}>Salvar</button>
+            <div className="botoes">
+                <button onClick={() => callback(false)}>Cancelar</button>
+                <button onClick={() => {
+                    validarDados(listaDias, nome);
+                }}>Salvar</button>
+            </div>
         </li>
     )
 }

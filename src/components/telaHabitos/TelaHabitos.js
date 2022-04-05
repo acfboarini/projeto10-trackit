@@ -1,9 +1,12 @@
 import { useState } from "react";
 import axios from "axios"; 
+import styled from "styled-components";
 
-import TelaSemHabitos from "./TelaSemHabitos";
-import TelaComHabitos from "./TelaComHabitos";
-import "./telaHabitos.css";
+import Header from "../header/Header";
+import TopoHabito from "./topoHabito/TopoHabito";
+import CriacaoHabito from "./criacaoHabito/CriacaoHabito";
+import ListaHabitos from "./listaHabitos/ListaHabitos";
+import Footer from "../footer/Footer";
 
 export default function TelaHabitos({token, imagem}) {
 
@@ -34,20 +37,34 @@ export default function TelaHabitos({token, imagem}) {
         });
     }
 
-    if (listaHabitos.length === 0) {
-        return <TelaSemHabitos 
-            token={token} 
-            setReload={setReload} 
-            setCriacaoHabito={setCriacaoHabito} 
-            criacaoHabito={criacaoHabito}
-        />
-    } else {
-        return <TelaComHabitos 
-            token={token} 
-            listaHabitos={listaHabitos}
-            setReload={setReload} 
-            setCriacaoHabito={setCriacaoHabito} 
-            criacaoHabito={criacaoHabito}
-        />
-    }
+    return (
+        <>
+            <Header imagem={imagem}/>
+            <main>
+                <TopoHabito setCriacaoHabito={setCriacaoHabito}/>
+                <Ul>
+                    {criacaoHabito? 
+                        <CriacaoHabito 
+                            callback={setCriacaoHabito} 
+                            token={token} 
+                            setReload={setReload}
+                        /> : 
+                        <></>
+                    }
+                    <ListaHabitos
+                        token={token}
+                        listaHabitos={listaHabitos}
+                        criacaoHabito={criacaoHabito}
+                        setCriacaoHabito={setCriacaoHabito}
+                        setReload={setReload}
+                    /> 
+                </Ul>
+            </main>
+            <Footer/>
+        </>
+    )
 }
+
+const Ul = styled.ul`
+    width: 100%;
+`;

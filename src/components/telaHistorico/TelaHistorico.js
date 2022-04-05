@@ -1,3 +1,4 @@
+import Footer from "../footer/Footer";
 import Header from "../header/Header";
 
 export default function TelaHistorico({token, imagem}) {
@@ -5,6 +6,7 @@ export default function TelaHistorico({token, imagem}) {
         <>
             <Header imagem={imagem}/>
             <h1>Tela Historico</h1>
+            <Footer/>
         </>
         
     );

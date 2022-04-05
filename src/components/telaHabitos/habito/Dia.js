@@ -1,27 +1,18 @@
-import { useState } from "react";
 import styled from "styled-components";
 
-export default function Button({dia, id, callback}) {
+export default function Dia({dia, days, id }) {
 
-    const [selecionado, setSelecionado] = useState(false);
-
-    return selecionado? (
-        <Botao 
-            onClick={() => {
-                setSelecionado(false);
-                callback(id);
-            }} 
+    return days.indexOf(id) > -1? (
+        <Botao  
+            disabled
             className="selecionado"
-            selecionado={selecionado}
+            selecionado={true}
         >{dia}</Botao>
     ):(
-        <Botao 
-            onClick={() => {
-                setSelecionado(true);
-                callback(id);
-            }} 
+        <Botao
+            disabled 
             className=""
-            selecionado={selecionado}
+            selecionado={false}
         >{dia}</Botao>
     )
 }

@@ -1,8 +1,9 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import styled from "styled-components";
+import axios from "axios";
 
 import Logo from "./../logo/Logo";
-import axios from "axios";
 
 export default function TelaCadastro({salvarImagem}) {
 
@@ -36,7 +37,7 @@ export default function TelaCadastro({salvarImagem}) {
     }
 
     return (
-        <main>
+        <Main>
             <Logo/>
             <section className="registros">
                 <input type="text" placeholder="email"
@@ -62,6 +63,12 @@ export default function TelaCadastro({salvarImagem}) {
                     <p>Jé tem uma conta? Faça login</p>
                 </Link>
             </section>
-        </main>
+        </Main>
     )
 }
+
+const Main = styled.main`
+    margin: 0;
+    height: 100vh;
+    background-color: #FFFFFF;
+`;

@@ -1,9 +1,9 @@
 import axios from "axios";
-import Button from "../criacaoHabito/Button";
+import Dia from "./Dia";
 
 import styled from "styled-components";
 
-export default function Habito({id, titulo, dias, token, setReload}) {
+export default function Habito({id, titulo, days, token, setReload}) {
 
     let dias_semana = ["S", "T", "Q", "Q", "S", "S", "D"];
 
@@ -28,13 +28,13 @@ export default function Habito({id, titulo, dias, token, setReload}) {
     }
 
     return (
-        <Li id={id}>
+        <Li>
             <H1>{titulo}</H1> 
             <div className="dias-semana">
                 {dias_semana.map((dia,index) => {
                     return (
-                        <Button key={index} dia={dia} id={index+1}
-                        />
+                        <Dia key={index} dia={dia} id={index+1}
+                        days={days}/>
                     )
                 })}
             </div>
@@ -49,7 +49,7 @@ const Li = styled.li`
     background-color: #FFFFFF;
     padding: 13px;
     position: relative;
-    margin: 10px 17px;
+    margin: 10px 0px;
     border-radius: 5px;
 `;
 
@@ -59,14 +59,11 @@ const H1 = styled.h1`
     color: #666666;
 `;
 
-/*const Div = styled.div`
-
-`;*/
-
 const Botao = styled.button`
     position: absolute;
     top: 10px;
     right: 3px;
     border: none;
     background-color: #ffffff;
+    font-size: 15px;
 `;

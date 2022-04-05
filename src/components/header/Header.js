@@ -4,15 +4,18 @@ export default function Header({imagem}) {
     return (
         <Container>
             <H1>TrackIt</H1>
-            <img src={imagem} alt="imagem usuario"/>
+            <Img src={imagem} alt="imagem usuario"/>
         </Container>
     );
 }
 
-const Container = styled.div`
+const Container = styled.header`
     width: 100%;
     height: 70px;
     position: fixed;
+    top: 0px;
+    left: 0px;
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;

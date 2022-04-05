@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useNavigate} from "react-router-dom";
 import axios from "axios";
+import styled from "styled-components";
 
 import Logo from "./../logo/Logo";
 
@@ -33,7 +34,7 @@ export default function TelaLogin({salvarToken}) {
     }
 
     return (
-        <main>
+        <Main>
             <Logo/>
             <section className="registros">
                 <input type="text" placeholder="email"
@@ -51,6 +52,12 @@ export default function TelaLogin({salvarToken}) {
                     <p>Não tem uma conta? Cadastre-se!</p>
                 </Link>
             </section>
-        </main>
+        </Main>
     );
 }
+
+const Main = styled.main`
+    margin: 0;
+    height: 100vh;
+    background-color: #FFFFFF;
+`;
