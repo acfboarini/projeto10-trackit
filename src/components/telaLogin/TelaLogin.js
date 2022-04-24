@@ -7,7 +7,7 @@ import Logo from "./../logo/Logo";
 
 import "./login.css";
 
-export default function TelaLogin({salvarToken}) {
+export default function TelaLogin({salvarToken, salvarImagem}) {
 
     const [email, setEmail] = useState("");
     const[senha, setSenha] = useState("");
@@ -25,6 +25,7 @@ export default function TelaLogin({salvarToken}) {
             const {data} = response;
             console.log(data);
             salvarToken(data.token);
+            salvarImagem(data.image);
             navigate("/habitos");
         });
         promise.catch(err => {

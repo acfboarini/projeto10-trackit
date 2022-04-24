@@ -18,7 +18,7 @@ export default function App() {
     const [imagem, setImagem] = useState(null);
 
     function salvarImagem(imagem) {
-        setImagem(imagem)
+        setImagem(imagem);
     }
 
     function salvarToken(token) {
@@ -30,12 +30,15 @@ export default function App() {
             <Routes>
                 <Route path="/" 
                     element={
-                        <TelaLogin salvarToken={token => salvarToken(token)}/>
+                        <TelaLogin 
+                            salvarToken={token => salvarToken(token)}
+                            salvarImagem={salvarImagem}
+                        />
                     }
                 ></Route>
 
                 <Route path="/cadastro" 
-                    element={<TelaCadastro salvarImagem={salvarImagem}/>}
+                    element={<TelaCadastro/>}
                 ></Route>
 
                 <Route path="/habitos" 

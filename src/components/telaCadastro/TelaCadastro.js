@@ -27,7 +27,6 @@ export default function TelaCadastro({salvarImagem}) {
             const {data} = response;
             console.log("cadastrado com sucesso", data);
             alert("cadastrado com sucesso");
-            salvarImagem(data.image);
             navigate("/");
         });
 

@@ -2,19 +2,22 @@ import styled from "styled-components";
 import axios from "axios";
 
 export default function HabitoDeHoje(props) {
-    const {id, token, name, setReload, done, sequenciaAtual, recorde} = props;
+    const {id, token, name, setReload, done, sequenciaAtual, recorde, atualizaHabitosFeitos} = props;
     const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
     };
 
+
     function atualizarHabito(id, done) {
         let rota = "";
         if (done) {
             rota = "uncheck";
+            atualizaHabitosFeitos(false);
         } else {
             rota = "check";
+            atualizaHabitosFeitos(true);
         }
         const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}/${rota}`;
         const promise = axios.post(URL, {}, config)

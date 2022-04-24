@@ -9,7 +9,7 @@ export default function CriacaoHabito({callback, setReload, token}) {
 
     const [nome, setNome] = useState("");
     const [listaDias, setListaDias] = useState([]);
-    let dias_semana = ["S", "T", "Q", "Q", "S", "S", "D"];
+    let dias_semana = ["D", "S", "T", "Q", "Q", "S", "S"];
     let lista_dias = listaDias;
 
     function alteraListaDias(numero) {
@@ -38,6 +38,7 @@ export default function CriacaoHabito({callback, setReload, token}) {
     }
 
     function enviarHabito(lista, nome) {
+        console.log(lista);
         const URL = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits";
         const config = {
             headers: {
@@ -71,7 +72,7 @@ export default function CriacaoHabito({callback, setReload, token}) {
             <div className="dias-semana">
                 {dias_semana.map((dia,index) => {
                     return (
-                        <Button key={index} dia={dia} id={index+1}
+                        <Button key={index} dia={dia} id={index}
                         callback={alteraListaDias}/>
                     )
                 })}

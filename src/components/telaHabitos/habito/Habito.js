@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 export default function Habito({id, titulo, days, token, setReload}) {
 
-    let dias_semana = ["S", "T", "Q", "Q", "S", "S", "D"];
+    let dias_semana = ["D", "S", "T", "Q", "Q", "S", "S"];
 
     function deletarHabito() {
         const URL = `https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/${id}`;
@@ -33,7 +33,7 @@ export default function Habito({id, titulo, days, token, setReload}) {
             <div className="dias-semana">
                 {dias_semana.map((dia,index) => {
                     return (
-                        <Dia key={index} dia={dia} id={index+1}
+                        <Dia key={index} dia={dia} id={index}
                         days={days}/>
                     )
                 })}
